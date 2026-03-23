@@ -1,0 +1,28 @@
+.header {
+  padding: 16px;
+  background: #0f172a;
+  color: white;
+}
+
+.header h1 {
+  margin-bottom: 10px;
+}
+
+.header input {
+  padding: 8px;
+  width: 250px;
+  border-radius: 6px;
+  border: none;
+}
+
+.header nav {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.header a {
+  color: #38bdf8;
+  text-decoration: none;
+}
