@@ -29,7 +29,7 @@ export default function Header() {
 
   return (
     <header className="header">
-      <h1>Gutendex Books</h1>
+      <h1>El.Library</h1>
 
       <form onSubmit={handleSearch}>
         <input
