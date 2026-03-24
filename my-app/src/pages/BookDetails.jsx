@@ -39,13 +39,18 @@ export default function BookDetails() {
         <p>
           <strong>Subjects:</strong> {book.subjects.join(", ")}
         </p>
+
+        {/* read online button */}
         <a
           href={book.formats["text/html"] || book.formats["application/pdf"]}
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
+          className="read-online"
         >
-          Read Online / Download
+          Start Reading Online
         </a>
+
+        {/* Favorites button */}
         <button
           onClick={() => (isFav ? removeFavorite(book.id) : addFavorite(book))}
         >

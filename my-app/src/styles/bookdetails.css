@@ -130,3 +130,27 @@
     align-self: center;
   }
 }
+.book-details .read-online {
+  display: block;
+  margin: 12px auto;
+  padding: 10px 16px;
+  background: linear-gradient(120deg, #38bdf8, #67e8f9);
+  color: #0f172a;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(56, 189, 248, 0.3);
+  transition: all 0.3s ease;
+}
+
+.book-details .read-online:hover {
+  background: linear-gradient(120deg, #67e8f9, #22d3ee);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(56, 189, 248, 0.35);
+}
+
+.book-details .read-online:active {
+  transform: scale(0.97);
+  box-shadow: 0 6px 16px rgba(56, 189, 248, 0.25);
+}
