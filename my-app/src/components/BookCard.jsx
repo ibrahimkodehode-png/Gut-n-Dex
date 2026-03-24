@@ -4,7 +4,9 @@ import "../styles/BookCard.css";
 export default function BookCard({ book }) {
   return (
     <div className="book-card">
-      <img src={book.formats["image/jpeg"]} alt={book.title} />
+      <div className="image-wrapper">
+        <img src={book.formats["image/jpeg"]} alt={book.title} />
+      </div>
 
       <div className="book-info">
         <h3>{book.title}</h3>
