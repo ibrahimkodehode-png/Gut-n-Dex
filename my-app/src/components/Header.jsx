@@ -1,5 +1,5 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import "../styles/header.css";
 
 const categories = [
@@ -21,10 +21,15 @@ const categories = [
 export default function Header() {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    setQuery(searchParams.get("search") || "");
+  }, [searchParams]);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    navigate(`/?search=${query}`);
+    navigate(`/?search=${query}&page=1`);
   };
 
   return (

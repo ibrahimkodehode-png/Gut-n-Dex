@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { getBooksByCategory } from "../api/gutendex";
 import BookCard from "../components/BookCard";
 import Pagination from "../components/Pagination";
@@ -7,59 +7,46 @@ import Loader from "../components/Loader";
 
 export default function Category() {
   const { topic } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const page = Number(searchParams.get("page")) || 1;
+
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
-    const fetchBooks = async () => {
-      setLoading(true);
-      try {
-        const data = await getBooksByCategory(topic, page);
+    setLoading(true);
+
+    getBooksByCategory(topic, page)
+      .then((data) => {
         setBooks(data.results);
         setTotalPages(Math.ceil(data.count / 20));
-      } catch (err) {
-        console.error("Failed to load books:", err);
-        setBooks([]);
-        setTotalPages(1);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchBooks();
+      })
+      .finally(() => setLoading(false));
   }, [topic, page]);
 
+  const handlePageChange = (newPage) => {
+    setSearchParams({ page: newPage });
+  };
+
+  if (loading) return <Loader />;
+
   return (
-    <main className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-center mb-6 tracking-wide">
-        {topic.toUpperCase()}
-      </h1>
+    <div>
+      <h2 className="page-title">{topic}</h2>
 
-      {loading ? (
-        <Loader />
-      ) : books.length === 0 ? (
-        <p className="text-center text-gray-500 text-lg">
-          No books found in this category.
-        </p>
-      ) : (
-        <>
-          <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {books.map((book) => (
-              <BookCard key={book.id} book={book} />
-            ))}
-          </section>
+      <div className="grid">
+        {books.map((b) => (
+          <BookCard key={b.id} book={b} />
+        ))}
+      </div>
 
-          <div className="mt-8 flex justify-center">
-            <Pagination
-              page={page}
-              totalPages={totalPages}
-              onChange={setPage}
-            />
-          </div>
-        </>
-      )}
-    </main>
+      <Pagination
+        page={page}
+        totalPages={totalPages}
+        onChange={handlePageChange}
+      />
+    </div>
   );
 }
