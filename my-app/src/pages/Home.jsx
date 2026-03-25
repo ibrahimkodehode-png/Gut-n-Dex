@@ -37,7 +37,7 @@ export default function Home() {
   if (error) return <p>{error}</p>;
 
   return (
-    <div>
+    <div className="results-section">
       <h2 className="page-title">Results for: "{query}"</h2>
 
       <div className="grid">
