@@ -30,8 +30,43 @@ body {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  align-items: start;
+}
+
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  margin-right: 6px;
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.language-badge {
+  background: rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+}
+
+.subject-badge {
+  background: rgba(134, 239, 172, 0.2);
+  color: #22c55e;
+  border: 1px solid rgba(134, 239, 172, 0.4);
 }
 
 /* ==============================
@@ -54,22 +89,19 @@ p {
 
 .page-title {
   display: inline-block;
+  margin: 24px 0 30px;
+  padding: 14px 22px;
   font-size: 24px;
   font-weight: 700;
   color: #67e8f9;
-  margin: 20px 0 24px 20px;
-  padding: 12px 20px;
   background: linear-gradient(
     135deg,
-    rgba(15, 23, 42, 0.9),
-    rgba(30, 41, 59, 0.75)
+    rgba(15, 23, 42, 0.92),
+    rgba(30, 41, 59, 0.78)
   );
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  border-radius: 14px;
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-  transition: all 0.3s ease;
-  animation: slideInRight 0.6s ease;
 }
 
 .page-title:hover {
