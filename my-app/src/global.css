@@ -12,8 +12,8 @@ body {
   width: 100%;
   min-height: 100%;
   font-family: "Inter", sans-serif;
-  background: #020617;
-  color: #ffffff;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: #e2e8f0;
   line-height: 1.5;
   scroll-behavior: smooth;
 }
@@ -30,8 +30,8 @@ body {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
 }
 
 /* ==============================
@@ -53,8 +53,10 @@ p {
 }
 
 .page-title {
-  color: #38bdf8;
+  font-size: 24px;
   margin-bottom: 20px;
+  color: #38bdf8;
+  font-weight: 600;
 }
 
 /* ==============================
@@ -117,7 +119,8 @@ select:focus {
    SCROLLBAR (optional modern style)
 ============================== */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
