@@ -1,3 +1,19 @@
+import useFavorites from "../hooks/useFavorites";
+import BookCard from "../components/BookCard";
+
 export default function Favorites() {
-  return <h1>Favorites</h1>;
+  const { favorites } = useFavorites();
+
+  if (favorites.length === 0) return <p>No favorites yet.</p>;
+
+  return (
+    <div>
+      <h2 className="page-title">Your Favorites</h2>
+      <div className="grid">
+        {favorites.map((b) => (
+          <BookCard key={b.id} book={b} />
+        ))}
+      </div>
+    </div>
+  );
 }
